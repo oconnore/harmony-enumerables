@@ -1,0 +1,38 @@
+{
+  "name": "harmony-enumerables",
+  "description": "A small polyfill for node --harmony collections that adds enumerability",
+  "homepage": "http://github.com/oconnore/harmony-enumerables.git",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=0.10.22"
+  },
+  "main": "./collections.js",
+  "maintainers": [
+    {
+      "name": "Eric O'Connor",
+      "email": "eric@bocoup.com",
+      "web": "http://bocoup.com"
+    }
+  ],
+  "scripts": {
+    "test": "node --harmony gulpfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/oconnore/harmony-enumerables.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "./LICENSE"
+    }
+  ],
+  "dependencies": {
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-mocha": "*",
+    "mocha": "*",
+    "chai": "*"
+  }
+}
