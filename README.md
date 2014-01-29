@@ -17,8 +17,8 @@ s.add({value: 3});
 s.add({value: 4});
 
 var x = 0;
-s.forEach(function(value) {
-  x += value;
+s.forEach(function(y) {
+  x += y.value;
 })
 
 assert.equal(x, 9); // true
@@ -29,14 +29,16 @@ In addition to forEach, it also adds an iterator interface:
 ```javascript
 var eMap = require('harmony-enumerables').Map;
 var m = new eMap();
-m.set(18, {value: 2});
-m.set(34, {value: 3});
-m.set(76, {value: 4});
+m.set(18, 2);
+m.set(34, 3);
+m.set(76, 4);
 
 var x = 0;
 var iter = m.iterator();
 while (!iter.done) {
-  var value = iter.next();
+  var keyValue = iter.next();
+  var key = keyValue[0];
+  var value = keyValue[1];
   x += value;
 }
 
