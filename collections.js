@@ -29,6 +29,9 @@ function Sequence(iterable) {
   if (iterable) {
     if (typeof iterable.length === 'number') {
       for (var i = 0; i < iterable.length; i++) {
+        if (iterable[i].length !== 2) {
+          throw new Error('malformed iterable array in constructor');
+        }
         this.add.apply(this, iterable[i]);
       }
     } else if (typeof iterable.iterator === 'function') {
@@ -158,7 +161,21 @@ EnumMap.prototype = {
 function EnumSet(iter) {
   var p = {};
   priv.set(this, p);
-  p.sequence = new Sequence(iter);
+  var newIter = iter;
+  if (Array.isArray(iter)) {
+    newIter = Array.prototype.map.call(iter, function(x) {
+      return [x, x];
+    });
+  } else if(iter && typeof iter.iterator === 'function') {
+    var i = iter.iterator();
+    while (!i.done) {
+      var nxt = i.next();
+      if (Array.isArray(nxt) && nxt[0] !== nxt[1]) {
+        throw new Error('Cannot create Set from Map');
+      }
+    }
+  }
+  p.sequence = new Sequence(newIter);
 }
 EnumSet.prototype = {
   constructor: EnumSet,
