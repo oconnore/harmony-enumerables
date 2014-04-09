@@ -14,6 +14,8 @@ gulp.task('test-collections', function() {
 
 gulp.task('default', ['test-collections'], function() {
   console.log('All done');
+  process.exit(0);
+  return;
 });
 
 gulp.start('default');

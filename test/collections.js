@@ -63,7 +63,6 @@ suite('Collections', function() {
       var m, erred = false;
       try {
         m = new eMap([[1], [3], [5]]);
-        m.forEach(function() { console.log(arguments);});
       } catch(err) {
         erred = true;
       }
@@ -172,6 +171,23 @@ suite('Collections', function() {
         count++;
       });
       assert.equal(count, 1, 'wrong count');
+    });
+
+    test('Delete 97 elements from a Map size=100', function() {
+      var m = new eMap();
+      for (var i = 0; i < 100; i++) {
+        m.set('A' + i, i);
+      }
+      for (var i = 0; i < 97; i++) {
+        m.delete('A' + i);
+      }
+      assert.equal(m.size, 3, 'size is not 3');
+      var count = 0;
+      m.forEach(function(x, key) {
+        assert.ok(x < 100 && x >=97, 'wrong value');
+        count++;
+      });
+      assert.equal(m.size, count, 'wrong number of iterations');
     });
   });
 });

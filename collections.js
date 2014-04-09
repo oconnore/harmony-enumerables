@@ -84,7 +84,9 @@ Sequence.prototype = {
       if (next) {
         next.prev = prev;
       }
-      this.sequence = next || prev;
+      if (this.sequence === node) {
+        this.sequence = node.next;
+      }
       this.nodeMap.delete(key);
       this._size--;
       return true;

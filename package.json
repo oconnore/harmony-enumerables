@@ -2,7 +2,7 @@
   "name": "harmony-enumerables",
   "description": "A small polyfill for node --harmony collections that adds enumerability",
   "homepage": "http://github.com/oconnore/harmony-enumerables.git",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "engines": {
     "node": ">=0.10.22"
   },
