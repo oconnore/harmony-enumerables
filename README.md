@@ -1,4 +1,4 @@
-# Harmony-Enumerables for Node.js
+# Harmony-Enumerables for everywhere
 
 [![Build Status](https://secure.travis-ci.org/oconnore/harmony-enumerables.png?branch=master)](http://travis-ci.org/oconnore/harmony-enumerables)
 
